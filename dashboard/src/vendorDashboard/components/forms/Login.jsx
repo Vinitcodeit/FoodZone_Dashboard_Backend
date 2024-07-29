@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { API_URL } from '../../data/apiPath'
 
-const Login = () => {
+const Login = ({showWelcomeHandler}) => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -23,6 +23,7 @@ const Login = () => {
         alert('Login Success')
         setEmail("")
         setPassword("")
+        showWelcomeHandler()
         localStorage.setItem('loginToken', data.token) //storing the token with the data into localhost , token will be generated whenever the vendor login
       }
       

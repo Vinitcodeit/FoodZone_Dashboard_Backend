@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { API_URL } from '../../data/apiPath'
 
-const Register = () => {
+const Register = ({showLoginHandler}) => {
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -18,7 +18,7 @@ const Register = () => {
         headers:{
           'Content-Type' : 'application/json'
         },
-        body:JSON.stringify({username, email, password}) //data from form fields 
+        body:JSON.stringify({username, email, password}) //data from form fields in UI 
       })
 
       const data = await response.json() //values coming from the response assigning to the data variable in json format
@@ -28,6 +28,7 @@ const Register = () => {
         setEmail("")
         setPassword("")
         alert("Vendor Registered Successfully")
+        showLoginHandler()
       }
     } catch (error) {
       console.error("Registration failed");
