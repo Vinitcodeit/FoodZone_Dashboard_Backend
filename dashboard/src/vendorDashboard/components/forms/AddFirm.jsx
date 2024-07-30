@@ -46,9 +46,10 @@ const AddFirm = () => {
 
         //to get value from checkbox lets create a instance
         const formData = new FormData()
-        formData.append('firmName', firmName) //pushing the firmName value to firmName
+        formData.append('firmName', firmName) //pushing the firmName value and adding to firmName
         formData.append('area', area) 
         formData.append('offer', offer)
+        formData.append('image', file)
 
         //loop thorugh the each categories and push to the category
         category.forEach((val)=>{
@@ -71,7 +72,18 @@ const AddFirm = () => {
         if(response.ok){
           console.log(data);
           alert('Firm Added Successfully')
+          setFirmName("")
+          setArea("")
+          setCategory([])
+          setRegion([])
+          setOffer("")
+          setFile(null)
         }
+
+        console.log("this is firmId", data.firmId)
+        const mango = data.firmId
+        localStorage.setItem('firmId', mango)
+
       } catch (error) {
         console.error('Failed to add Firm');
       }
