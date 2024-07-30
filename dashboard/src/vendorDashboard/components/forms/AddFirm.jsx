@@ -78,9 +78,13 @@ const AddFirm = () => {
           setRegion([])
           setOffer("")
           setFile(null)
+        }else if(data.message === "vendor can have only one firm"){
+          alert("Firm Exists, only one Firm can be added")
+        }else{
+          alert("Failed to add Firm")
         }
 
-        console.log("this is firmId", data.firmId)
+        console.log("this is firmId: ", data.firmId)
         const mango = data.firmId
         localStorage.setItem('firmId', mango)
 

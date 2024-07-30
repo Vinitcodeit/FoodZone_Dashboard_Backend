@@ -35,12 +35,12 @@ const AddProducts = () => {
       const loginToken = localStorage.getItem("loginToken"); //getting the login token from the local storage
       const firmId = localStorage.getItem('firmId');
 
-      if (!loginToken || firmId) {
+      if (!loginToken || !firmId) {
         console.error("User not authenticated");
       }
 
       const formData = new FormData();
-      formData.append("productName", productName); //pushing the firmName value and adding to firmName
+      formData.append("productName", productName); //pushing the productname value and adding to "productname" key
       formData.append("price", price);
       formData.append("description", description);
       formData.append("image", image);

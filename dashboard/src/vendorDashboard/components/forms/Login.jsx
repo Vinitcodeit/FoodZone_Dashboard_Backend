@@ -24,9 +24,28 @@ const Login = ({showWelcomeHandler}) => {
         setEmail("")
         setPassword("")
         showWelcomeHandler()
-        localStorage.setItem('loginToken', data.token) //storing the token with the data into localhost , token will be generated whenever the vendor login
+        localStorage.setItem('loginToken', data.token) //storing the token from the data into localhost , token will be generated whenever the vendor logedin
       }
-      
+
+      //getting vendorid from the database when we logedin
+      const vendorId = data.vendorId
+
+      console.log("checking for vendorId: ", vendorId);
+
+      //assigning the above vendorid to this api path dynamically
+      const vendorResponse = await fetch(`${API_URL}/vendor/single-vendor/${vendorId}`)
+
+      //storing vendor response in vendorData
+      const vendorData = await vendorResponse.json()
+
+      //if vendor response in successfully got then the vendor firm id from vendor data is stored
+      if(vendorResponse.ok){
+        const vendorFirmId = vendorData.vendorFirmId
+        console.log("checking for firmId: ", vendorFirmId);
+
+        //storing the firm id automatically whenever vendor gets loged in
+        localStorage.setItem('firmId', vendorFirmId)
+      }
     } catch (error) {
       console.error(error);
     }
