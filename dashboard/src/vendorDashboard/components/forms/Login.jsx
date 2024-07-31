@@ -45,6 +45,7 @@ const Login = ({showWelcomeHandler}) => {
 
         //storing the firm id automatically whenever vendor gets loged in
         localStorage.setItem('firmId', vendorFirmId)
+        window.location.reload()
       }
     } catch (error) {
       console.error(error);
