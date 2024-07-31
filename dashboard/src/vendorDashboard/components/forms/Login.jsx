@@ -23,8 +23,8 @@ const Login = ({showWelcomeHandler}) => {
         alert('Login Success')
         setEmail("")
         setPassword("")
-        showWelcomeHandler()
         localStorage.setItem('loginToken', data.token) //storing the token from the data into localhost , token will be generated whenever the vendor logedin
+        showWelcomeHandler()
       }
 
       //getting vendorid from the database when we logedin
@@ -41,10 +41,11 @@ const Login = ({showWelcomeHandler}) => {
       //if vendor response in successfully got then the vendor firm id from vendor data is stored
       if(vendorResponse.ok){
         const vendorFirmId = vendorData.vendorFirmId
-        console.log("checking for firmId: ", vendorFirmId);
-
+        const vendorFirmName = vendorData.vendor.firm[0].firmName
+        console.log("my firm name is", vendorFirmName);
         //storing the firm id automatically whenever vendor gets loged in
         localStorage.setItem('firmId', vendorFirmId)
+        localStorage.setItem('firmName', vendorFirmName)
         window.location.reload()
       }
     } catch (error) {
