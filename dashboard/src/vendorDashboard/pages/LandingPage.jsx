@@ -6,6 +6,7 @@ import Register from '../components/forms/Register'
 import AddFirm from '../components/forms/AddFirm'
 import AddProducts from '../components/forms/AddProducts'
 import Welcome from '../components/Welcome'
+import AllProducts from '../components/AllProducts'
 
 const LandingPage = () => {
 
@@ -68,6 +69,7 @@ const LandingPage = () => {
      {showFirm && <AddFirm />}
      {showProduct && <AddProducts />}
      {showWelcome && <Welcome /> }
+     <AllProducts />
      </div>
     </section>
    </>

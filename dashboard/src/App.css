@@ -170,5 +170,23 @@ align-items: center;
     margin-left: 20px;
 }
 
+/* products table */
+
+.product-table{
+    width: 80vw;
+    border-collapse: collapse;
+    margin-top: 50px;
+
+}
+
+.product-table th, .product-table td{
+    border: 1px solid gray;
+    padding: 8px;
+}
+
+.product-table th{
+    text-align: left;
+    background-color: gray;
+}
 
 
