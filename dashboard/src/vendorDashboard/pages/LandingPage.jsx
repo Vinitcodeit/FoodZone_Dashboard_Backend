@@ -17,6 +17,7 @@ const LandingPage = () => {
   const [showWelcome, setShowwelcome] = useState(false)
   const [showAllProducts, setShowAllProducts] = useState(false)
   const [showLogout, setShowLogout] = useState(false)
+  const [showFirmTitle, setShowFirmTitle] = useState(true)
 
   useEffect(()=>{
   const loginToken = localStorage.getItem('loginToken')
@@ -25,12 +26,20 @@ const LandingPage = () => {
   }
   },[])
 
+  useEffect(()=>{
+const firmName = localStorage.getItem('firmName')
+if(firmName){
+  setShowFirmTitle(false)
+}
+  },[])
+
   const logOutHandler = ()=>{
     confirm("Are you sure to Logout?")
     localStorage.removeItem("loginToken")
     localStorage.removeItem("firmId")
     localStorage.removeItem("firmName")
     setShowLogout(false)
+    setShowFirmTitle(true)
 
   }
 
@@ -53,21 +62,31 @@ const LandingPage = () => {
   }
 
   const showFirmHandler = ()=>{
+    if(showLogout){
     setShowFirm(true)
     setShowLogin(false)
     setShowRegister(false)
     setShowProduct(false)
     setShowwelcome(false)
     setShowAllProducts(false)
+    }else{
+      alert("Please Login")
+      setShowLogin(true)
+    }
   }
 
   const showProductHandler = ()=>{
+    if(showLogout){
     setShowProduct(true)
     setShowFirm(false)
     setShowLogin(false)
     setShowRegister(false)
     setShowwelcome(false)
     setShowAllProducts(false)
+  }else{
+    alert("Please Login")
+    setShowLogin(true)
+  }
   }
 
   const showWelcomeHandler = ()=>{
@@ -80,12 +99,17 @@ const LandingPage = () => {
   }
 
   const showProductsHandler = ()=>{
+    if(showLogout){
     setShowProduct(false)
     setShowFirm(false)
     setShowLogin(false)
     setShowRegister(false)
     setShowwelcome(false)
     setShowAllProducts(true)
+  }else{
+    alert("Please Login")
+    setShowLogin(true)
+  }
   }
 
   
@@ -96,13 +120,14 @@ const LandingPage = () => {
      <Navbar showLoginHandler = {showLoginHandler} showRegisterHandler={showRegisterHandler}
       showLogout={showLogout} logOutHandler={logOutHandler} />
      <div className="collectionSection">
-     <Sidebar showFirmHandler={showFirmHandler} showProductHandler={showProductHandler} showProductsHandler={showProductsHandler} />
-     {showLogin && <Login showWelcomeHandler={showWelcomeHandler} />}
-    {showRegister && <Register showLoginHandler={showLoginHandler} />}
-     {showFirm && <AddFirm />}
-     {showProduct && <AddProducts />}
+     <Sidebar showFirmHandler={showFirmHandler} showProductHandler={showProductHandler}
+      showProductsHandler={showProductsHandler} showFirmTitle={showFirmTitle} />
+     {showLogin &&  <Login showWelcomeHandler={showWelcomeHandler} />}
+     {showRegister && <Register showLoginHandler={showLoginHandler} />}
+     {showFirm && showLogout && <AddFirm />}
+     {showProduct && showLogout && <AddProducts />}
      {showWelcome && <Welcome /> }
-     {showAllProducts && <AllProducts/>}
+     {showAllProducts && showLogout && <AllProducts/>}
      </div>
     </section>
    </>
