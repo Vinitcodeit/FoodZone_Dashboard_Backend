@@ -4,7 +4,8 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto Condensed", sans-serif;
+    /* font-family: "Roboto Condensed", sans-serif; */
+    font-family: "Roboto", sans-serif;
 }
     
 
@@ -12,11 +13,13 @@ body{
     height: 80px;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(93, 80, 193);
+    /* background-color: rgb(93, 80, 193); */
+    background-color: #F46036;
     align-items: center;
     color: white;
     padding: 0 20px;
     font-size: large;
+
 }
 
 .userAuth{
@@ -28,7 +31,10 @@ body{
     max-width: 15%;
     height: 95vh;
     padding-top: 10px;
-    background-color: lightgray;
+    /* background-color: lightgray; */
+   background-color: #2E294E;
+   color: white;
+    
 }
 
 .sideBarSection ul li{
@@ -105,6 +111,9 @@ align-items: center;
     align-items: center;
     border: 1px solid gray;
     border-radius: 10px;
+    -webkit-box-shadow: -1px 3px 19px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 3px 19px 0px rgba(0,0,0,0.75);
+    box-shadow: -1px 3px 19px 0px rgba(0,0,0,0.75);
 }
 
 .tabelForm label{
@@ -202,6 +211,44 @@ align-items: center;
 
 .errorSection h1{
     font-size: 4rem;
+}
+
+h3{
+    color: #D7263D;
+}
+
+/* button submit */
+.btnSubmit button{
+    background-color: rgb(59, 59, 200);
+    color: white;
+    border-radius: 5px;
+    width: 6rem;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.btnSubmit button:hover{
+    background-color: rgb(188, 76, 76);
+    color: black;
+}
+
+.userAuth{
+    display: flex;
+    flex-direction: row;
+}
+.login:hover{
+  color: rgb(34, 18, 34);
+ 
+}
+
+.register:hover{
+    color: blue;
+}
+
+
+.logout:hover{
+    color: blue;
 }
 
 

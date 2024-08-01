@@ -96,7 +96,7 @@ const AddFirm = () => {
   return (
     <div className='formSection'>
     <form className='tabelForm' onSubmit={handleFirmSubmit}>
-        <h2>Add Firm</h2>
+        <h3>Add Firm</h3>
         <label>Firm Name</label>
         <input type="text" name='firmName' value={firmName} onChange={(e)=> setFirmName(e.target.value)} /><br />
         <label>Area</label>
